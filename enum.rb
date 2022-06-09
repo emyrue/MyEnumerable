@@ -1,26 +1,22 @@
 module MyEnumerable
   def all?
     each do |e|
-      return false unless yield (e)
+      return false unless yield e
     end
     true
   end
 
   def any?
     each do |e|
-      if yield (e)
-        return true
-      end
+      return true if yield e
     end
     false
   end
-  
+
   def filter
     new_list = []
     each do |e|
-      if yield (e)
-        new_list << e
-      end
+      new_list << e if yield e
     end
     new_list
   end
